@@ -100,7 +100,7 @@ export default function App() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+      const response = await fetch('https://formspree.io/f/xykngwbk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
