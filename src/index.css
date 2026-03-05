@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* ENABLE V4 CLASS-BASED DARK MODE */
+@variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased transition-colors duration-1000;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 dark:bg-[#120B1E]/60 backdrop-blur-xl border border-white/80 dark:border-pink-500/20 shadow-xl dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)] rounded-[2rem];
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-fuchsia-500 to-rose-400 dark:from-pink-400 dark:via-fuchsia-300 dark:to-rose-300;
+  }
+}
+
+/* Base floating animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- MIND-BLOWING SCROLL REVEAL ANIMATIONS --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- SUNSET & SUNRISE TRANSITION ANIMATIONS --- */
+@keyframes sunDown {
+  0% { transform: translateY(-60vh) scale(0.8); opacity: 1; }
+  100% { transform: translateY(60vh) scale(1.5); opacity: 0; }
+}
+
+@keyframes sunUp {
+  0% { transform: translateY(60vh) scale(1.5); opacity: 0; }
+  100% { transform: translateY(-60vh) scale(0.8); opacity: 1; }
+}
+
+@keyframes fadeSky {
+  0% { opacity: 0; backdrop-filter: blur(0px); }
+  50% { opacity: 1; backdrop-filter: blur(12px); }
+  100% { opacity: 0; backdrop-filter: blur(0px); }
+}
+
+.animate-sky { 
+  animation: fadeSky 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+}
+
+/* Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Blob animation delays */
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
