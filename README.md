@@ -2,7 +2,7 @@
 
 > A modern, sophisticated personal portfolio and company showcase built with cutting-edge web technologies. Experience elegant design, smooth animations, and professional presentation of expertise in optimization, software engineering, and emerging AI/ML technologies.
 
-[![Vercel Status](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=flat-square&logo=vercel)](https://himgrow-technology.vercel.app)
+[![Vercel Status](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=flat-square&logo=vercel)](https://himgrow.vercel.app)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react)](https://reactjs.org)
 [![Vite](https://img.shields.io/badge/Vite-7.3.1-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
@@ -11,7 +11,7 @@
 
 ## 🚀 Live Demo
 
-**[Visit Himgrow →](https://himgrow-technology.vercel.app)**
+**[Visit Himgrow →](https://himgrow.vercel.app)**
 
 ---
 
