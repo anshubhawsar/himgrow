@@ -3,7 +3,6 @@ import {
   Menu, X, Sparkles, Cloud, Moon, Sun,
   Star, Zap, Cpu, ChevronRight, Play, Shield, Code, BarChart, Heart
 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -101,22 +100,26 @@ export default function App() {
     setSubmitStatus(null);
 
     try {
-      await emailjs.send(
-        'service_95bjrne', // Replace with your EmailJS service ID
-        'template_zijt7ni', // Replace with your EmailJS template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'vabhawsar@gmail.com'
+      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        '1swqVSnPf6kD23HsF' // Replace with your EmailJS public key
-      );
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      });
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
-      console.error('Email send failed:', error);
+      console.error('Form submission failed:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
