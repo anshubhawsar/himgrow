@@ -102,15 +102,15 @@ export default function App() {
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_95bjrne', // Replace with your EmailJS service ID
+        'template_zijt7ni', // Replace with your EmailJS template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: 'vabhawsar@gmail.com'
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        '1swqVSnPf6kD23HsF' // Replace with your EmailJS public key
       );
 
       setSubmitStatus('success');
