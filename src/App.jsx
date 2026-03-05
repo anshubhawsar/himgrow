@@ -100,7 +100,7 @@ export default function App() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formspree.io/f/xykngwbk', {
+      const response = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
