@@ -3,6 +3,7 @@ import {
   Menu, X, Sparkles, Cloud, Moon, Sun,
   Star, Zap, Cpu, ChevronRight, Play, Shield, Code, BarChart, Heart
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +26,15 @@ export default function App() {
     "Hello, Visitor",
     "Let's Create Something Amazing"
   ];
+
+  // Contact form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   useEffect(() => {
     if (isDarkMode) {
@@ -82,6 +92,42 @@ export default function App() {
       setTimeout(() => setIsDarkMode(true), 500);
       setTimeout(() => setThemePhase('idle'), 1200);
     }
+  };
+
+  // Contact form handler
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'vabhawsar@gmail.com'
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -408,12 +454,16 @@ export default function App() {
             <div className="reveal delay-300 mt-16 max-w-2xl mx-auto">
               <div className="p-8 glass-panel">
                 <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center">Send a Message</h3>
-                <form className="space-y-6">
+                <form onSubmit={handleFormSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Name</label>
                       <input 
                         type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
                         className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-rose-200/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors"
                         placeholder="Your name"
                       />
@@ -422,6 +472,10 @@ export default function App() {
                       <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Email</label>
                       <input 
                         type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
                         className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-rose-200/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors"
                         placeholder="your@email.com"
                       />
@@ -431,16 +485,31 @@ export default function App() {
                     <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Message</label>
                     <textarea 
                       rows="5" 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-rose-200/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors resize-none"
                       placeholder="Tell me about your project..."
                     ></textarea>
                   </div>
+                  {submitStatus === 'success' && (
+                    <div className="text-green-600 dark:text-green-400 text-center font-medium">
+                      Message sent successfully! I'll get back to you soon.
+                    </div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <div className="text-red-600 dark:text-red-400 text-center font-medium">
+                      Failed to send message. Please try again or contact me directly.
+                    </div>
+                  )}
                   <div className="text-center">
                     <button 
                       type="submit" 
-                      className="px-8 py-3 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-500 hover:to-rose-400 text-white font-bold rounded-full hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-pink-500/30"
+                      disabled={isSubmitting}
+                      className="px-8 py-3 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-500 hover:to-rose-400 text-white font-bold rounded-full hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-pink-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
                   </div>
                 </form>
