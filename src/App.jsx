@@ -477,7 +477,7 @@ export default function App() {
           {/* Featured Software Projects */}
           <div id="projects" className="reveal mb-20">
             <h3 className="text-3xl md:text-4xl font-black mb-8 text-slate-900 dark:text-white text-center">Featured Projects</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               <a href="https://himgrowx.vercel.app/" target="_blank" rel="noopener noreferrer" className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
