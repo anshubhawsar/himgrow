@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Menu, X, Sparkles, Cloud, Moon, Sun,
-  Star, Zap, Cpu, ChevronRight, Play, Shield, Code, BarChart, Heart, LogIn, UserPlus, LogOut
+  Star, Zap, Cpu, ChevronRight, Play, Shield, Code, BarChart, Heart
 } from 'lucide-react';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000/api';
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,30 +34,6 @@ export default function App() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
-
-  // Auth form state
-  const [authMode, setAuthMode] = useState('login'); // 'login' | 'register'
-  const [authData, setAuthData] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
-  const [authUser, setAuthUser] = useState(null);
-  const [authToken, setAuthToken] = useState(localStorage.getItem('himgrow_access_token') || '');
-  const [isAuthSubmitting, setIsAuthSubmitting] = useState(false);
-  const [authStatus, setAuthStatus] = useState(null); // 'success' | 'error' | null
-  const [authMessage, setAuthMessage] = useState('');
-
-  // Password reset state
-  const [showForgotPassword, setShowForgotPassword] = useState(false);
-  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
-  const [forgotPasswordStatus, setForgotPasswordStatus] = useState(null);
-  const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
-
-  // Email verification state
-  const [showEmailVerification, setShowEmailVerification] = useState(false);
-  const [verificationToken, setVerificationToken] = useState('');
-  const [emailVerStatus, setEmailVerStatus] = useState(null);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -105,43 +79,6 @@ export default function App() {
     }
   }, [currentText, currentQuoteIndex, quotes]);
 
-  useEffect(() => {
-    if (authToken) {
-      localStorage.setItem('himgrow_access_token', authToken);
-    } else {
-      localStorage.removeItem('himgrow_access_token');
-    }
-  }, [authToken]);
-
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      if (!authToken) {
-        return;
-      }
-
-      try {
-        const response = await fetch(`${API_BASE_URL}/auth/me`, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${authToken}`
-          },
-          credentials: 'include'
-        });
-
-        if (!response.ok) {
-          throw new Error('Session expired');
-        }
-
-        const data = await response.json();
-        setAuthUser(data.user);
-      } catch {
-        setAuthToken('');
-        setAuthUser(null);
-      }
-    };
-
-    fetchCurrentUser();
-  }, [authToken]);
 
   const toggleTheme = () => {
     if (themePhase !== 'idle') return;
@@ -197,116 +134,6 @@ export default function App() {
     });
   };
 
-  const handleAuthInputChange = (e) => {
-    setAuthData({
-      ...authData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleAuthSubmit = async (e) => {
-    e.preventDefault();
-    setIsAuthSubmitting(true);
-    setAuthStatus(null);
-    setAuthMessage('');
-
-    const endpoint = authMode === 'login' ? 'login' : 'register';
-    const payload = authMode === 'login'
-      ? { email: authData.email, password: authData.password }
-      : authData;
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/auth/${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify(payload)
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Authentication failed');
-      }
-
-      setAuthToken(data.accessToken);
-      setAuthUser(data.user);
-      setAuthStatus('success');
-      setAuthMessage(authMode === 'login' ? 'Logged in successfully.' : 'Account created and logged in.');
-      setAuthData({ name: '', email: '', password: '' });
-    } catch (error) {
-      setAuthStatus('error');
-      setAuthMessage(error.message || 'Authentication failed');
-    } finally {
-      setIsAuthSubmitting(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch(`${API_BASE_URL}/auth/logout`, {
-        method: 'POST',
-        credentials: 'include'
-      });
-    } finally {
-      setAuthToken('');
-      setAuthUser(null);
-      setAuthStatus('success');
-      setAuthMessage('Logged out successfully.');
-    }
-  };
-
-  const handleForgotPassword = async (e) => {
-    e.preventDefault();
-    setForgotPasswordStatus(null);
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: forgotPasswordEmail })
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to send reset email');
-      }
-
-      setForgotPasswordStatus('success');
-      setForgotPasswordMessage('Password reset email sent. Check your inbox.');
-      setForgotPasswordEmail('');
-      setTimeout(() => setShowForgotPassword(false), 2000);
-    } catch (error) {
-      setForgotPasswordStatus('error');
-      setForgotPasswordMessage(error.message);
-    }
-  };
-
-  const handleVerifyEmail = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/auth/verify-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: verificationToken })
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Verification failed');
-      }
-
-      setEmailVerStatus('success');
-      setTimeout(() => setShowEmailVerification(false), 2000);
-    } catch (error) {
-      setEmailVerStatus('error');
-    }
-  };
 
   return (
     <div className="min-h-screen font-sans overflow-hidden transition-colors duration-1000 bg-rose-50 dark:bg-[#0A0510] text-slate-800 dark:text-rose-50 selection:bg-pink-300 dark:selection:bg-pink-900 selection:text-pink-900 dark:selection:text-pink-50 relative">
@@ -352,7 +179,7 @@ export default function App() {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {['About', 'Features', 'Expertise', 'Projects', 'Skills', 'Auth', 'Contact'].map((item) => (
+              {['About', 'Features', 'Expertise', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-bold text-slate-600 dark:text-rose-100/70 hover:text-pink-600 dark:hover:text-pink-400 transition-colors relative group">
                   {item}
                   <span className="absolute -bottom-1 left-0 w-0 h-1 rounded-full bg-pink-500 transition-all duration-300 group-hover:w-full"></span>
@@ -604,122 +431,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Auth Section */}
-      <section id="auth" className="py-24 relative z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="reveal text-4xl md:text-5xl font-black mb-4 text-slate-900 dark:text-white">Account <span className="text-gradient">Access</span></h2>
-            <p className="reveal delay-100 text-slate-600 dark:text-rose-100/60 text-lg max-w-2xl mx-auto font-medium">
-              Secure login and registration powered by your backend API and PostgreSQL database.
-            </p>
-          </div>
-
-          <div className="reveal delay-200 p-8 glass-panel max-w-2xl mx-auto">
-            {authUser ? (
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Welcome, {authUser.name}</h3>
-                <p className="text-slate-600 dark:text-rose-100/60">Signed in as {authUser.email}</p>
-                <button
-                  onClick={handleLogout}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-pink-500 text-white dark:text-slate-950 font-bold hover:scale-105 transition-transform"
-                >
-                  <LogOut className="w-4 h-4" />
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="flex justify-center gap-3 mb-6">
-                  <button
-                    onClick={() => setAuthMode('login')}
-                    className={`px-5 py-2.5 rounded-full font-bold transition-colors ${authMode === 'login' ? 'bg-pink-600 text-white' : 'bg-white dark:bg-[#1A0D2E] text-slate-700 dark:text-rose-100/70'}`}
-                  >
-                    Login
-                  </button>
-                  <button
-                    onClick={() => setAuthMode('register')}
-                    className={`px-5 py-2.5 rounded-full font-bold transition-colors ${authMode === 'register' ? 'bg-pink-600 text-white' : 'bg-white dark:bg-[#1A0D2E] text-slate-700 dark:text-rose-100/70'}`}
-                  >
-                    Register
-                  </button>
-                </div>
-
-                <form onSubmit={handleAuthSubmit} className="space-y-5">
-                  {authMode === 'register' && (
-                    <div>
-                      <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Full name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={authData.name}
-                        onChange={handleAuthInputChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                  )}
-                  <div>
-                    <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={authData.email}
-                      onChange={handleAuthInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white"
-                      placeholder="you@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-600 dark:text-rose-100/60 mb-2">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={authData.password}
-                      onChange={handleAuthInputChange}
-                      minLength={8}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white"
-                      placeholder="Minimum 8 characters"
-                    />
-                  </div>
-
-                  {authMode === 'login' && (
-                    <div className="text-center">
-                      <button
-                        type="button"
-                        onClick={() => setShowForgotPassword(true)}
-                        className="text-sm text-pink-600 dark:text-pink-400 hover:underline"
-                      >
-                        Forgot password?
-                      </button>
-                    </div>
-                  )}
-
-                  {authStatus === 'success' && (
-                    <div className="text-green-600 dark:text-green-400 text-center font-medium">{authMessage}</div>
-                  )}
-                  {authStatus === 'error' && (
-                    <div className="text-red-600 dark:text-red-400 text-center font-medium">{authMessage}</div>
-                  )}
-
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      disabled={isAuthSubmitting}
-                      className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold rounded-full hover:scale-105 transition-transform disabled:opacity-50"
-                    >
-                      {authMode === 'login' ? <LogIn className="w-4 h-4" /> : <UserPlus className="w-4 h-4" />}
-                      {isAuthSubmitting ? 'Please wait...' : authMode === 'login' ? 'Login' : 'Create Account'}
-                    </button>
-                  </div>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-32 relative z-10">
@@ -825,85 +536,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Forgot Password Modal */}
-      {showForgotPassword && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white dark:bg-[#1A0D2E] rounded-2xl p-8 max-w-md w-full mx-4">
-            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Reset Password</h3>
-            <form onSubmit={handleForgotPassword} className="space-y-4">
-              <input
-                type="email"
-                value={forgotPasswordEmail}
-                onChange={(e) => setForgotPasswordEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#0A0510] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white"
-              />
-              {forgotPasswordStatus === 'success' && (
-                <div className="text-green-600 dark:text-green-400 text-center font-medium">{forgotPasswordMessage}</div>
-              )}
-              {forgotPasswordStatus === 'error' && (
-                <div className="text-red-600 dark:text-red-400 text-center font-medium">{forgotPasswordMessage}</div>
-              )}
-              <div className="flex gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 px-4 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-500 transition"
-                >
-                  Send Reset Link
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowForgotPassword(false)}
-                  className="flex-1 px-4 py-3 bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Email Verification Modal */}
-      {showEmailVerification && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white dark:bg-[#1A0D2E] rounded-2xl p-8 max-w-md w-full mx-4">
-            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Verify Email</h3>
-            <form onSubmit={handleVerifyEmail} className="space-y-4">
-              <input
-                type="text"
-                value={verificationToken}
-                onChange={(e) => setVerificationToken(e.target.value)}
-                placeholder="Enter verification token from email"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-[#0A0510] border border-rose-200 dark:border-pink-900/20 text-slate-900 dark:text-white"
-              />
-              {emailVerStatus === 'success' && (
-                <div className="text-green-600 dark:text-green-400 text-center font-medium">Email verified!</div>
-              )}
-              {emailVerStatus === 'error' && (
-                <div className="text-red-600 dark:text-red-400 text-center font-medium">Verification failed</div>
-              )}
-              <div className="flex gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 px-4 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-500 transition"
-                >
-                  Verify
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowEmailVerification(false)}
-                  className="flex-1 px-4 py-3 bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* 4. Footer */}
       <footer className="bg-rose-50/50 dark:bg-[#0A0510] pt-24 pb-12 relative overflow-hidden mt-20 border-t border-rose-200/30 dark:border-pink-900/20">
@@ -917,7 +549,7 @@ export default function App() {
               <span className="text-2xl font-black text-slate-900 dark:text-white">Himgrow.</span>
             </div>
             <div className="flex gap-4">
-              {['About', 'Features', 'Expertise', 'Projects', 'Skills', 'Auth', 'Contact'].map(link => (
+              {['About', 'Features', 'Expertise', 'Projects', 'Skills', 'Contact'].map(link => (
                 <a key={link} href={`#${link.toLowerCase()}`} className="bg-white dark:bg-[#1A0D2E] border border-rose-200 dark:border-pink-900/20 text-slate-600 dark:text-rose-200/60 px-6 py-2 rounded-full font-bold hover:bg-rose-50 dark:hover:bg-pink-900/40 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
                   {link}
                 </a>
