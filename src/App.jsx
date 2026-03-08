@@ -478,18 +478,18 @@ export default function App() {
           <div id="projects" className="reveal mb-20">
             <h3 className="text-3xl md:text-4xl font-black mb-8 text-slate-900 dark:text-white text-center">Featured Projects</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              <a href="https://himgrowx.vercel.app/" target="_blank" rel="noopener noreferrer" className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+              <a href="https://himgrowx.vercel.app/" target="_blank" rel="noopener noreferrer" className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 cursor-pointer h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Sparkles className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">Himgrow</h4>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">HimgrowX</h4>
                 </div>
-                <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Real-world AI automation company delivering intelligent solutions for business process optimization and enterprise automation.</p>
-                <p className="text-sm text-slate-500 dark:text-rose-200/50">Leveraging cutting-edge machine learning technologies to transform business operations and drive digital innovation.</p>
+                <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Real-world AI automation project by Himgrow, the company owned by Anshu, focused on enterprise process optimization.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Leverages cutting-edge machine learning to transform operations, improve efficiency, and drive digital innovation.</p>
               </a>
 
-              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300">
+              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Shield className="w-6 h-6 text-purple-600 dark:text-purple-400" />
@@ -497,10 +497,10 @@ export default function App() {
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white">AI Security Agent</h4>
                 </div>
                 <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Autonomous AI system that identifies and engages malicious actors in real-time cybersecurity scenarios.</p>
-                <p className="text-sm text-slate-500 dark:text-rose-200/50">Leverages reinforcement learning to analyze behavioral patterns and strengthen digital defenses.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Leverages reinforcement learning to analyze behavioral patterns and strengthen digital defenses.</p>
               </div>
 
-              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300">
+              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Zap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
@@ -508,10 +508,10 @@ export default function App() {
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white">Thermal Process Simulator</h4>
                 </div>
                 <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Advanced simulation software for thermal gradient analysis in friction stir welding operations.</p>
-                <p className="text-sm text-slate-500 dark:text-rose-200/50">Automates material calculations and cooling simulations to ensure manufacturing precision and quality.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Automates material calculations and cooling simulations to ensure manufacturing precision and quality.</p>
               </div>
 
-              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300">
+              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Cpu className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
@@ -519,7 +519,7 @@ export default function App() {
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white">Robotics Kinematics Solver</h4>
                 </div>
                 <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Computational engine for multi-axis robotic motion using Denavit-Hartenberg transformation matrices.</p>
-                <p className="text-sm text-slate-500 dark:text-rose-200/50">Translates mechanical constraints into precise motion control algorithms for industrial automation.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Translates mechanical constraints into precise motion control algorithms for industrial automation.</p>
               </div>
             </div>
           </div>
