@@ -478,6 +478,17 @@ export default function App() {
           <div id="projects" className="reveal mb-20">
             <h3 className="text-3xl md:text-4xl font-black mb-8 text-slate-900 dark:text-white text-center">Featured Projects</h3>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <a href="https://himgrowx.vercel.app/" target="_blank" rel="noopener noreferrer" className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Sparkles className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">Himgrow</h4>
+                </div>
+                <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Real-world AI automation company delivering intelligent solutions for business process optimization and enterprise automation.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50">Leveraging cutting-edge machine learning technologies to transform business operations and drive digital innovation.</p>
+              </a>
+
               <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">

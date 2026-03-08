@@ -60,6 +60,7 @@ Technical expertise in:
 - **Current Focus**: AI/ML technologies and machine learning algorithms
 
 ### 3. **Featured Projects**
+- **Himgrow** - Real-world AI automation company delivering intelligent solutions for business process optimization and automation using cutting-edge machine learning technologies. [🔗 Visit](https://himgrowx.vercel.app/)
 - AI Security Agent - Autonomous security system with reinforcement learning
 - Thermal Process Simulator - Advanced thermal gradient analysis for welding
 - Robotics Kinematics Solver - Multi-axis robotic motion calculations
