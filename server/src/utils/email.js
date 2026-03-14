@@ -16,7 +16,7 @@ export const sendVerificationEmail = async (email, token, frontendUrl = "http://
   await transporter.sendMail({
     from: env.EMAIL_FROM,
     to: email,
-    subject: "Verify Your Himgrow Account",
+    subject: "Verify Your Account",
     html: `
       <h2>Email Verification</h2>
       <p>Click the link below to verify your email address:</p>
@@ -35,7 +35,7 @@ export const sendPasswordResetEmail = async (email, token, frontendUrl = "http:/
   await transporter.sendMail({
     from: env.EMAIL_FROM,
     to: email,
-    subject: "Reset Your Himgrow Password",
+    subject: "Reset Your Password",
     html: `
       <h2>Password Reset Request</h2>
       <p>Click the link below to reset your password:</p>

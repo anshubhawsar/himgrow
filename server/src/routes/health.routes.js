@@ -3,5 +3,5 @@ import { Router } from "express";
 export const healthRoutes = Router();
 
 healthRoutes.get("/", (req, res) => {
-  res.status(200).json({ ok: true, service: "himgrow-api" });
+  res.status(200).json({ ok: true, service: "portfolio-api" });
 });
