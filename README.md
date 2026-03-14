@@ -55,37 +55,65 @@
 - Floating background orbs and smooth transitions
 
 ### 2. About Me
-Technical expertise in:
-- **Core Expertise**: Mathematical optimization, Linear Programming, Operations Research
-- **Systems Engineering**: Computer architecture, competitive programming, embedded systems  
-- **Current Focus**: AI/ML technologies and machine learning algorithms
+AI/ML Enthusiast with strong foundation in full-stack web development and algorithmic problem-solving. Proven track record of architecting intelligent, autonomous systems—from agentic security honeypots to robust desktop applications. Adept at leveraging competitive programming expertise and AI integration to build scalable, high-performance software solutions.
+
+**Areas of Expertise:**
+- C++, Python, JavaScript
+- Reinforcement Learning & Predictive Modeling
+- Full-Stack Development: React & Node.js
+- Agentic AI & LLMs with Prompt Engineering
+- Data Structures, Algorithms & System Optimization
 
 ### 3. Featured Projects
 
-#### Hamlab Controller
-- Advanced hardware control system with embedded programming and real-time processing
-- Open-source project integrating modern control systems with intuitive interfaces for laboratory automation
+#### Agentic AI Security Honeypot (2026–Present)
+- Autonomous AI system to proactively detect, engage, and analyze malicious actors
+- Engineered specialized, persona-driven language models for dynamic interaction with targets
+- Successfully extracts operational details while consuming scammers' resources
+- Tech Stack: Python, LLMs, Prompt Engineering
+
+#### Twitter Automation Engine (2026–Present)
+- Robust end-to-end automation pipeline for content delivery and social media management
+- Implemented secure API integrations and rate-limit handling
+- Tech Stack: Python, Twitter API, OAuth, Cron Jobs
+- [📂 GitHub Repository](https://github.com/anshubhawsar/socialmedia_agent)
+
+#### Hamlab GUI Software (2026)
+- Comprehensive desktop application for managing laboratory operations and local data processing
+- Built intuitive GUI with integrated SQLite database
+- Significantly optimized user workflow efficiency and data entry accuracy
+- Tech Stack: Python, Tkinter, SQLite
 - [📂 GitHub Repository](https://github.com/anshubhawsar/Hamlab_controller)
 
-#### Bitcoin Sentiment Intelligence
-- AI-powered sentiment analysis platform combining market intelligence with blockchain data
-- Analyzes sentiment trends across Hyperliquid and Bitcoin markets for data-driven trading insights
+#### AI Trading & Reinforcement Learning Engine (2026)
+- Research and application of RL mathematical foundations for automated algorithmic trading
+- Leveraged advanced machine learning to evaluate market signals
+- Backtested strategies and optimized automated decision-making
+- Tech Stack: Python, RL Algorithms, Financial APIs
 - [📂 GitHub Repository](https://github.com/anshubhawsar/Bitcoin-Sentiment-x-Hyperliquid-Performance-Intelligence)
 
 #### Robotics Kinematics Solver
-- Computational engine for multi-axis robotic motion using Denavit-Hartenberg transformation matrices
-- Translates mechanical constraints into precise motion control algorithms for industrial automation
-
-#### Thermal Process Simulator
-- Advanced simulation software for thermal gradient analysis in friction stir welding operations
-- Automates material calculations and cooling simulations for manufacturing precision
+- Computational engine for multi-axis robotic motion using Denavit-Hartenberg matrices
+- Translates mechanical constraints into precise motion control algorithms
 
 ### 4. Technical Skills
-- **Languages**: C++, Python, Arduino C, JavaScript/React
-- **Specialized Knowledge**: Operations Research, Linear Programming, Robotics, Reinforcement Learning, AI/ML
-- **Core Competencies**: Algorithm Optimization, System Architecture, Memory Management, Data Science
+- **Languages**: C++, Python, JavaScript
+- **AI/ML Technologies**: Reinforcement Learning, LLMs, Prompt Engineering, Agentic AI
+- **Frameworks & Tools**: React, Node.js, Flask, Tkinter, SQLite, Git, Linux
+- **Specializations**: Data Structures & Algorithms, API Integration, Performance Optimization
 
-### 5. Contact Section
+### 5. Education
+**Indian Institute of Information Technology, Design and Manufacturing (IIITDM) Jabalpur, Madhya Pradesh**
+- Bachelor of Technology (B.Tech) in Computer Science
+- Duration: 2024–2028
+- **Relevant Coursework**: Data Structures & Algorithms, Artificial Intelligence, Machine Learning, Object-Oriented Programming, Computer Architecture
+
+### 6. Achievements
+- **Competitive Programming**: Achieved 1150 rating on Codeforces shortly after starting, demonstrating rapid growth in complex problem-solving and algorithmic optimization using C++
+- **Code Optimization**: Consistently focused on writing clean, highly optimized, and computationally efficient code for resource-constrained environments
+- **AI/ML Focus**: Deep expertise in reinforcement learning and autonomous AI systems with proven capability to build production-ready applications
+
+### 7. Contact Section
 - Direct email and phone contact options
 - Professional contact form (powered by Formspree)
 - Easy accessibility for collaboration inquiries

@@ -263,7 +263,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="reveal text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white">About <span className="text-gradient">Me</span></h2>
-            <p className="reveal delay-100 text-slate-600 dark:text-rose-100/60 text-xl max-w-2xl mx-auto font-medium">Passionate about bridging theoretical mathematics with practical software solutions, continuously expanding into AI and machine learning.</p>
+            <p className="reveal delay-100 text-slate-600 dark:text-rose-100/60 text-xl max-w-2xl mx-auto font-medium">AI/ML Enthusiast with strong foundation in full-stack web development and algorithmic problem-solving. Architecting intelligent, autonomous systems from agentic security honeypots to robust applications using cutting-edge AI integration.</p>
           </div>
 
           {/* Core Expertise */}
@@ -273,14 +273,15 @@ export default function App() {
               <div className="p-8 glass-panel">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-pink-100 dark:bg-pink-900/20 rounded-full flex items-center justify-center">
-                    <BarChart className="w-6 h-6 text-pink-600 dark:text-pink-400" />
+                    <Sparkles className="w-6 h-6 text-pink-600 dark:text-pink-400" />
                   </div>
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Mathematical Optimization</h4>
+                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">AI/ML & Autonomous Systems</h4>
                 </div>
                 <ul className="space-y-3 text-slate-600 dark:text-rose-100/60 font-medium">
-                  <li>• Expertise in Linear Programming and Simplex Method for solving complex logistical challenges</li>
-                  <li>• Advanced Transportation and Assignment problem modeling for resource optimization</li>
-                  <li>• Application of operations research to enhance automated system efficiency</li>
+                  <li>• Reinforcement Learning algorithms and mathematical foundations</li>
+                  <li>• Agentic AI systems and LLM-powered applications</li>
+                  <li>• Prompt Engineering and persona-driven language models</li>
+                  <li>• Predictive modeling and AI integration for intelligent automation</li>
                 </ul>
               </div>
 
@@ -289,13 +290,13 @@ export default function App() {
                   <div className="w-12 h-12 bg-fuchsia-100 dark:bg-fuchsia-900/20 rounded-full flex items-center justify-center">
                     <Code className="w-6 h-6 text-fuchsia-600 dark:text-fuchsia-400" />
                   </div>
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Systems Engineering</h4>
+                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Full-Stack Development</h4>
                 </div>
                 <ul className="space-y-3 text-slate-600 dark:text-rose-100/60 font-medium">
-                  <li>• Deep understanding of computer architecture and memory management systems</li>
-                  <li>• Competitive programming experience with optimized C++ algorithms and data structures</li>
-                  <li>• Embedded systems development using C++ and Arduino for hardware control</li>
-                  <li>• Currently exploring AI/ML technologies to expand computational capabilities</li>
+                  <li>• C++ and Python for performance-critical applications</li>
+                  <li>• React & Node.js for modern web applications</li>
+                  <li>• Data Structures & Algorithms with competitive programming expertise</li>
+                  <li>• Database design (SQLite, SQL) and Linux system optimization</li>
                 </ul>
               </div>
             </div>
@@ -338,16 +339,16 @@ export default function App() {
                 <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Translates mechanical constraints into precise motion control algorithms for industrial automation.</p>
               </div>
 
-              <div className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
+              <a href="https://github.com/anshubhawsar/socialmedia_agent" target="_blank" rel="noopener noreferrer" className="p-8 glass-panel group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <BarChart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">Thermal Process Simulator</h4>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">Social Media AI Agent</h4>
                 </div>
-                <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Advanced simulation software for thermal gradient analysis in friction stir welding operations.</p>
-                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">Automates material calculations and cooling simulations to ensure manufacturing precision.</p>
-              </div>
+                <p className="text-slate-600 dark:text-rose-100/60 font-medium mb-4">Intelligent autonomous agent for social media interaction and content management.</p>
+                <p className="text-sm text-slate-500 dark:text-rose-200/50 mt-auto">AI-powered automation for Twitter/X and other platforms with intelligent decision-making and engagement strategies.</p>
+              </a>
             </div>
           </div>
 
@@ -359,33 +360,33 @@ export default function App() {
                 <div>
                   <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
                     <Code className="w-5 h-5 text-pink-500" />
-                    Programming Languages
+                    Languages
                   </h4>
-                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">C++, Python, Arduino C</p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
-                    <BarChart className="w-5 h-5 text-fuchsia-500" />
-                    Specialized Knowledge
-                  </h4>
-                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">Operations Research, Linear Programming, Robotic Kinematics, Reinforcement Learning</p>
+                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">C++, Python, JavaScript</p>
                 </div>
 
                 <div>
                   <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-purple-500" />
-                    Current Focus
+                    AI/ML Technologies
                   </h4>
-                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">AI/ML Technologies, Machine Learning Algorithms, Neural Networks</p>
+                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">Reinforcement Learning, LLMs, Prompt Engineering, Agentic AI</p>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
+                    <BarChart className="w-5 h-5 text-fuchsia-500" />
+                    Frameworks & Tools
+                  </h4>
+                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">React, Node.js, Flask, Tkinter, SQLite, Git, Linux</p>
                 </div>
 
                 <div>
                   <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
                     <Zap className="w-5 h-5 text-orange-500" />
-                    Key Competencies
+                    Specializations
                   </h4>
-                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">Algorithm Optimization, System Architecture, Memory Management</p>
+                  <p className="text-slate-600 dark:text-rose-100/60 font-medium">Data Structures, Algorithms, API Integration, Optimization</p>
                 </div>
               </div>
             </div>
